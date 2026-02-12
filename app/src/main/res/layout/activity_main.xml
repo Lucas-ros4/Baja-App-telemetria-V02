@@ -1,0 +1,91 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#F5F5F5">
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/imageLogo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/logo"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="Logo do App"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Titulo -->
+    <TextView
+        android:id="@+id/textTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Telemetria App V02"
+        android:textSize="28sp"
+        android:textColor="#6200EE"
+        android:fontFamily="sans-serif-black"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="32dp"/>
+
+    <!-- Sensores -->
+    <TextView
+        android:id="@+id/textVelocidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Velocidade: --"
+        android:textSize="22sp"
+        android:textColor="#FFFFFF"
+        android:padding="12dp"
+        android:background="#6200EE"
+        android:layout_gravity="center_horizontal"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="16dp"/>
+
+    <TextView
+        android:id="@+id/textTemperatura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Temperatura: --"
+        android:textSize="22sp"
+        android:textColor="#FFFFFF"
+        android:padding="12dp"
+        android:background="#6200EE"
+        android:layout_gravity="center_horizontal"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="16dp"/>
+
+    <TextView
+        android:id="@+id/textPressao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pressão: --"
+        android:textSize="22sp"
+        android:textColor="#FFFFFF"
+        android:padding="12dp"
+        android:background="#6200EE"
+        android:layout_gravity="center_horizontal"/>
+
+    <!-- espaco em branco para deixar o rodape la em baixo(futuramente colocar o grafico aqui -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- rodape -->
+    <TextView
+        android:id="@+id/textRodape"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Desenvolvido pela equipe de Intel"
+        android:textSize="10sp"
+        android:textColor="#888888"
+        android:layout_gravity="end"
+        android:fontFamily="sans-serif-light"/>
+
+</LinearLayout>
