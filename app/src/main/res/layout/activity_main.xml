@@ -1,5 +1,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -70,8 +72,156 @@
         android:padding="12dp"
         android:background="#6200EE"
         android:layout_gravity="center_horizontal"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:layout_weight="0.1"/>
 
+
+    <!--barras de gráfico-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+
+        <!--barra Velocidade-->
+        <TextView
+            android:id="@+id/BarraVelocidade"
+            android:layout_width="90dp"
+            android:layout_height="200dp"
+            android:background="@drawable/bg_gfx_rect"
+            android:backgroundTint = "#0400ff"
+            android:padding="12dp"
+            android:text=""
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="60"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/textBarraTemperatura"
+            app:layout_constraintLeft_toLeftOf ="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin=""
+            />
+        <!--Texto inferior Velocidade-->
+        <TextView
+            android:id="@+id/textBarraVelocidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:padding="12dp"
+            android:text="VEL"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="60"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/textBarraTemperatura"
+            app:layout_constraintLeft_toLeftOf ="parent"
+            app:layout_constraintTop_toBottomOf="@+id/BarraVelocidade"
+            />
+        <!--barraTemperatura-->
+        <TextView
+            android:id="@+id/BarraTemperatura"
+            android:layout_width="90dp"
+            android:layout_height="200dp"
+            android:background="@drawable/bg_gfx_rect"
+            android:backgroundTint = "#5d00ff"
+            android:padding="12dp"
+            android:rotate="180"
+            android:text=""
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="60"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+        <!--Texto inferior Temperatura-->
+        <TextView
+            android:id="@+id/textBarraTemperatura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:padding="12dp"
+            android:rotate="180"
+            android:text="TEMP"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="60"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/BarraTemperatura"
+            />
+
+        <!--barrapressão-->
+        <TextView
+            android:id="@+id/BarraPressão"
+            android:layout_width="90dp"
+            android:layout_height="200dp"
+            android:background="@drawable/bg_gfx_rect"
+            android:backgroundTint = "#c300ff"
+            android:padding="12dp"
+            android:rotate="180"
+            android:text=""
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="60"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf ="@+id/textBarraTemperatura"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="" />
+        <!--Texto inferior pressão-->
+        <TextView
+            android:id="@+id/textBarraPressão"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:padding="12dp"
+            android:rotate="180"
+            android:text="PRES"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="60"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf ="@+id/textBarraTemperatura"
+            app:layout_constraintTop_toBottomOf="@+id/BarraPressão"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <!-- espaco em branco para deixar o rodape la em baixo(futuramente colocar o grafico aqui -->
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -88,4 +238,4 @@
         android:layout_gravity="end"
         android:fontFamily="sans-serif-light"/>
 
-</LinearLayout>
+
