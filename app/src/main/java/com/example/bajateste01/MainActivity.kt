@@ -18,6 +18,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textTemperatura: TextView
     private lateinit var textPressao: TextView
 
+    private lateinit var graphVelocidade: TextView
+    private lateinit var graphTemperatura: TextView
+    private lateinit var graphPressao: TextView
+
+
     private lateinit var api: ApiService
     private val handler = Handler(Looper.getMainLooper())
     private val updateInterval: Long = 2000 // 2 segundos
@@ -37,6 +42,12 @@ class MainActivity : AppCompatActivity() {
         textTemperatura = findViewById(R.id.textTemperatura)
         textPressao = findViewById(R.id.textPressao)
 
+        //parte dos graficos
+        graphVelocidade = findViewById(R.id.BarraVelocidade)
+        graphTemperatura = findViewById(R.id.BarraTemperatura)
+        graphPressao = findViewById(R.id.BarraPressao)
+        //
+
         val retrofit = Retrofit.Builder()
             .baseUrl("http://192.168.1.158/") // IP do ESP32
             .addConverterFactory(GsonConverterFactory.create())
@@ -48,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         handler.post(updateRunnable)
     }
 
+
     private fun fetchDados() {
         api.getDados().enqueue(object : Callback<Dados> {
             override fun onResponse(call: Call<Dados>, response: Response<Dados>) {
@@ -57,6 +69,13 @@ class MainActivity : AppCompatActivity() {
                     textTemperatura.text = "Temperatura: ${dados?.temperatura} °C"
                     textPressao.text = "Pressão: ${dados?.pressao} hPa"
                     //quando adicionar ou retirar os dados aqui modificar na classe primeiro e lembrar de atulizar os dados e a funcao callback
+                    /*
+                    //essa é a minha tentativa inicial de fazer altura y de um retangulo:textview ficar em função dos dados
+                    graphVelocidade.layout_height = dados?.velocidade
+                    graphTemperatura.layout_height = dados?.temperatura
+                    graphPressao.layout_height = dados?.pressao
+
+                     */
                 }
             }
 

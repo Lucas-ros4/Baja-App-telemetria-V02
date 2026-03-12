@@ -127,7 +127,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/textBarraTemperatura"
             app:layout_constraintLeft_toLeftOf ="parent"
-            app:layout_constraintTop_toBottomOf="@+id/BarraVelocidade"
+            app:layout_constraintTop_toBottomOf=""
             />
         <!--barraTemperatura-->
         <TextView
@@ -170,12 +170,13 @@
             android:shadowRadius="60"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/BarraTemperatura"
+            app:layout_constraintTop_toBottomOf=""
+            app:layout_constraintBottom_toBottomOf="parent"
             />
 
         <!--barrapressão-->
         <TextView
-            android:id="@+id/BarraPressão"
+            android:id="@+id/BarraPressao"
             android:layout_width="90dp"
             android:layout_height="200dp"
             android:background="@drawable/bg_gfx_rect"
@@ -198,7 +199,7 @@
             android:layout_margin="" />
         <!--Texto inferior pressão-->
         <TextView
-            android:id="@+id/textBarraPressão"
+            android:id="@+id/textBarraPressao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -216,7 +217,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf ="@+id/textBarraTemperatura"
-            app:layout_constraintTop_toBottomOf="@+id/BarraPressão"
+            app:layout_constraintTop_toBottomOf=""
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
