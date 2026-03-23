@@ -96,14 +96,14 @@
     <!--barras de gráfico-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:layout_height="250dp"
+        android:padding="2dp">
 
-        <!--barra Velocidade-->
+        <!--barra Velocidade - CORRIGIDA: bottom fixo, altura variável -->
         <View
             android:id="@+id/barraVelocidade"
             android:layout_width="45dp"
-            android:layout_height="140dp"
+            android:layout_height="150dp"
             android:layout_margin="0dp"
             android:background="@drawable/bg_gfx_rect"
             android:backgroundTint="#0400ff"
@@ -117,10 +117,11 @@
             android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/textBarraVelocidadeBaixo"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/barraRPM"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <!--Texto superior Velocidade-->
         <TextView
@@ -137,10 +138,9 @@
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/barraVelocidade"
             app:layout_constraintLeft_toLeftOf="@+id/barraVelocidade"
-            app:layout_constraintRight_toRightOf="@+id/barraVelocidade"
-            app:layout_constraintBottom_toTopOf="@+id/barraVelocidade" />
+            app:layout_constraintRight_toRightOf="@+id/barraVelocidade" />
 
         <!--Texto inferior Velocidade-->
         <TextView
@@ -159,14 +159,13 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/barraVelocidade"
-            app:layout_constraintRight_toRightOf="@+id/barraVelocidade"
-            app:layout_constraintTop_toBottomOf="@+id/barraVelocidade" />
+            app:layout_constraintRight_toRightOf="@+id/barraVelocidade" />
 
-        <!--barra RPM-->
+        <!--barra RPM - CORRIGIDA: bottom fixo, altura variável -->
         <View
             android:id="@+id/barraRPM"
             android:layout_width="45dp"
-            android:layout_height="140dp"
+            android:layout_height="150dp"
             android:layout_margin="0dp"
             android:background="@drawable/bg_gfx_rect"
             android:backgroundTint="#32a852"
@@ -180,10 +179,11 @@
             android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/textBarraRPMbaixo"
             app:layout_constraintLeft_toRightOf="@+id/barraVelocidade"
             app:layout_constraintRight_toLeftOf="@+id/barraTemperatura"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <!--Texto inferior RPM-->
         <TextView
@@ -202,9 +202,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/barraRPM"
-            app:layout_constraintRight_toRightOf="@id/barraRPM"
-            app:layout_constraintTop_toBottomOf="@id/barraRPM" />
-
+            app:layout_constraintRight_toRightOf="@id/barraRPM" />
 
         <!--Texto superior RPM-->
         <TextView
@@ -221,16 +219,15 @@
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/barraRPM"
             app:layout_constraintLeft_toLeftOf="@id/barraRPM"
-            app:layout_constraintRight_toRightOf="@id/barraRPM"
-            app:layout_constraintBottom_toTopOf="@id/barraRPM" />
+            app:layout_constraintRight_toRightOf="@id/barraRPM" />
 
-        <!--barra Temperatura-->
+        <!--barra Temperatura - CORRIGIDA: bottom fixo, altura variável -->
         <View
             android:id="@+id/barraTemperatura"
             android:layout_width="45dp"
-            android:layout_height="140dp"
+            android:layout_height="150dp"
             android:background="@drawable/bg_gfx_rect"
             android:backgroundTint="#5d00ff"
             android:gravity="center"
@@ -243,10 +240,11 @@
             android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/textBarraTemperaturaBaixo"
             app:layout_constraintLeft_toRightOf="@+id/barraRPM"
             app:layout_constraintRight_toLeftOf="@+id/barraPressao"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <!--Texto superior Temperatura-->
         <TextView
@@ -263,14 +261,13 @@
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/barraTemperatura"
             app:layout_constraintLeft_toLeftOf="@+id/barraTemperatura"
-            app:layout_constraintRight_toRightOf="@+id/barraTemperatura"
-            app:layout_constraintBottom_toTopOf="@+id/barraTemperatura" />
+            app:layout_constraintRight_toRightOf="@+id/barraTemperatura" />
 
         <!--Texto inferior Temperatura-->
         <TextView
-            android:id="@+id/textBarraTemperatura"
+            android:id="@+id/textBarraTemperaturaBaixo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -285,14 +282,13 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/barraTemperatura"
-            app:layout_constraintRight_toRightOf="@+id/barraTemperatura"
-            app:layout_constraintTop_toBottomOf="@+id/barraTemperatura" />
+            app:layout_constraintRight_toRightOf="@+id/barraTemperatura" />
 
-        <!--barra Pressão-->
+        <!--barra Pressão - CORRIGIDA: bottom fixo, altura variável -->
         <View
             android:id="@+id/barraPressao"
             android:layout_width="45dp"
-            android:layout_height="140dp"
+            android:layout_height="150dp"
             android:layout_margin="0dp"
             android:background="@drawable/bg_gfx_rect"
             android:backgroundTint="#c300ff"
@@ -306,10 +302,11 @@
             android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/textBarraPressaoBaixo"
             app:layout_constraintLeft_toRightOf="@+id/barraTemperatura"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <!--Texto superior Pressao-->
         <TextView
@@ -326,14 +323,13 @@
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/barraPressao"
             app:layout_constraintLeft_toLeftOf="@+id/barraPressao"
-            app:layout_constraintRight_toRightOf="@+id/barraPressao"
-            app:layout_constraintBottom_toTopOf="@+id/barraPressao" />
+            app:layout_constraintRight_toRightOf="@+id/barraPressao" />
 
         <!--Texto inferior Pressão-->
         <TextView
-            android:id="@+id/textBarraPressao"
+            android:id="@+id/textBarraPressaoBaixo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -348,12 +344,11 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/barraPressao"
-            app:layout_constraintRight_toRightOf="@+id/barraPressao"
-            app:layout_constraintTop_toBottomOf="@+id/barraPressao" />
+            app:layout_constraintRight_toRightOf="@+id/barraPressao" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- espaco em branco para deixar o rodape la em baixo(futuramente colocar o grafico aqui -->
+    <!-- espaco em branco para deixar o rodape la em baixo -->
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
