@@ -1,5 +1,6 @@
 package com.example.bajateste01
 
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,7 +12,13 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.math.min
+
+//imports do MPAndroidChart para LineChart
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.components.Description
 
 // Constantes de máximo para cada sensor
 const val VEL_MAX = 40      // velocidade máxima em km/h
@@ -23,6 +30,9 @@ const val PRESS_MAX = 100   // pressão máxima em hPa
 const val BARRA_ALTURA_MAX_PX = 200
 
 class MainActivity : AppCompatActivity() {
+
+    // LineChart
+    private lateinit var lineChart: LineChart
 
     private lateinit var textVelocidade: TextView
     private lateinit var valBarraVelocidade: TextView
@@ -43,6 +53,13 @@ class MainActivity : AppCompatActivity() {
     private val handler = Handler(Looper.getMainLooper())
     private val updateInterval: Long = 2000 // 2 segundos
 
+    // Lista para armazenar histórico dos dados (opcional)
+    private val historicoVelocidade = mutableListOf<Entry>()
+    private val historicoRPM = mutableListOf<Entry>()
+    private val historicoTemperatura = mutableListOf<Entry>()
+    private val historicoPressao = mutableListOf<Entry>()
+    private var contador = 0
+
     private val updateRunnable = object : Runnable {
         override fun run() {
             fetchDados()
@@ -53,6 +70,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Inicializa o LineChart
+        lineChart = findViewById(R.id.lineChart)
+        configurarGrafico()
 
         textVelocidade = findViewById(R.id.textVelocidade)
         valBarraVelocidade = findViewById(R.id.textBarraVelocidadeVal)
@@ -83,24 +104,131 @@ class MainActivity : AppCompatActivity() {
         handler.post(updateRunnable)
     }
 
+    private fun configurarGrafico() {
+        // Configura a descrição
+        val description = Description()
+        description.text = "Histórico dos Sensores"
+        lineChart.description = description
+
+        // Habilita animação
+        lineChart.animateX(1000)
+
+        // Desabilita o eixo Y direito
+        lineChart.axisRight.isEnabled = false
+
+        // Habilita a grade
+        lineChart.setDrawGridBackground(false)
+
+        // Configura o eixo X
+        val xAxis = lineChart.xAxis
+        xAxis.position = com.github.mikephil.charting.components.XAxis.XAxisPosition.BOTTOM
+        xAxis.setDrawGridLines(true)
+        xAxis.labelRotationAngle = -45f // Rotaciona labels se necessário
+
+        // Configura o eixo Y esquerdo
+        val yAxis = lineChart.axisLeft
+        yAxis.setDrawGridLines(true)
+
+        // Habilita zoom
+        lineChart.setPinchZoom(true)
+
+        // Habilita toque para interação
+        lineChart.setTouchEnabled(true)
+
+        // Habilita legenda
+        lineChart.legend.isEnabled = true
+    }
+
+    private fun atualizarGrafico(dados: Dados?) {
+        dados?.let {
+            // Incrementa contador para posição X
+            contador++
+
+            // Adiciona novos pontos ao histórico
+            historicoVelocidade.add(Entry(contador.toFloat(), it.velocidade.toFloat()))
+            historicoRPM.add(Entry(contador.toFloat(), it.rpm.toFloat()))
+            historicoTemperatura.add(Entry(contador.toFloat(), it.temperatura.toFloat()))
+            historicoPressao.add(Entry(contador.toFloat(), it.pressao.toFloat()))
+
+            // Mantém apenas os últimos 20 pontos (opcional)
+            if (historicoVelocidade.size > 20) {
+                historicoVelocidade.removeAt(0)
+                historicoRPM.removeAt(0)
+                historicoTemperatura.removeAt(0)
+                historicoPressao.removeAt(0)
+            }
+
+            // Cria os datasets para cada sensor
+            val dataSetVelocidade = LineDataSet(historicoVelocidade, "Velocidade (km/h)")
+            val dataSetRPM = LineDataSet(historicoRPM, "RPM")
+            val dataSetTemperatura = LineDataSet(historicoTemperatura, "Temperatura (°C)")
+            val dataSetPressao = LineDataSet(historicoPressao, "Pressão (hPa)")
+
+            // Configura cores e estilos
+            dataSetVelocidade.color = Color.BLUE
+            dataSetVelocidade.setCircleColor(Color.BLUE)
+            dataSetVelocidade.lineWidth = 2f
+            dataSetVelocidade.circleRadius = 4f
+            dataSetVelocidade.setDrawCircleHole(false)
+            dataSetVelocidade.valueTextSize = 10f
+
+            dataSetRPM.color = Color.GREEN
+            dataSetRPM.setCircleColor(Color.GREEN)
+            dataSetRPM.lineWidth = 2f
+            dataSetRPM.circleRadius = 4f
+            dataSetRPM.setDrawCircleHole(false)
+            dataSetRPM.valueTextSize = 10f
+
+            dataSetTemperatura.color = Color.MAGENTA
+            dataSetTemperatura.setCircleColor(Color.MAGENTA)
+            dataSetTemperatura.lineWidth = 2f
+            dataSetTemperatura.circleRadius = 4f
+            dataSetTemperatura.setDrawCircleHole(false)
+            dataSetTemperatura.valueTextSize = 10f
+
+            dataSetPressao.color = Color.RED
+            dataSetPressao.setCircleColor(Color.RED)
+            dataSetPressao.lineWidth = 2f
+            dataSetPressao.circleRadius = 4f
+            dataSetPressao.setDrawCircleHole(false)
+            dataSetPressao.valueTextSize = 10f
+
+            // Preenche a área abaixo da linha (opcional)
+            dataSetVelocidade.setDrawFilled(true)
+            dataSetVelocidade.fillColor = Color.BLUE
+            dataSetVelocidade.fillAlpha = 50
+
+            dataSetRPM.setDrawFilled(true)
+            dataSetRPM.fillColor = Color.GREEN
+            dataSetRPM.fillAlpha = 50
+
+            dataSetTemperatura.setDrawFilled(true)
+            dataSetTemperatura.fillColor = Color.MAGENTA
+            dataSetTemperatura.fillAlpha = 50
+
+            dataSetPressao.setDrawFilled(true)
+            dataSetPressao.fillColor = Color.RED
+            dataSetPressao.fillAlpha = 50
+
+            // Cria o objeto de dados
+            val lineData = LineData(dataSetVelocidade, dataSetRPM, dataSetTemperatura, dataSetPressao)
+            lineChart.data = lineData
+
+            // Atualiza o gráfico
+            lineChart.invalidate()
+        }
+    }
+
     private fun dpToPix(dp: Int): Int {
         return (dp * resources.displayMetrics.density).toInt()
     }
 
     /**
      * Calcula a altura da barra em pixels baseado no valor atual e valor máximo
-     * @param valorAtual Valor atual do sensor
-     * @param valorMaximo Valor máximo esperado para o sensor
-     * @return Altura em pixels (entre 10px e BARRA_ALTURA_MAX_PX)
      */
     private fun calcularAlturaBarra(valorAtual: Int, valorMaximo: Int): Int {
-        // Calcula a porcentagem (garantindo que não ultrapasse 100%)
         val porcentagem = (valorAtual.toFloat() / valorMaximo.toFloat() * 100).coerceIn(0f, 100f)
-
-        // Converte porcentagem para pixels (mínimo 10px para ainda ser visível)
         val alturaEmPixels = (BARRA_ALTURA_MAX_PX * porcentagem / 100).toInt()
-
-        // Garante altura mínima de 10px
         return alturaEmPixels.coerceAtLeast(10)
     }
 
@@ -110,7 +238,10 @@ class MainActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val dados = response.body()
 
-                    // CORRIGIDO: Textos corretos
+                    // Atualiza o gráfico de linhas
+                    atualizarGrafico(dados)
+
+                    // Textos corretos
                     textVelocidade.text = "Velocidade: ${dados?.velocidade} km/h"
                     valBarraVelocidade.text = "${dados?.velocidade} km/h"
 
@@ -124,39 +255,32 @@ class MainActivity : AppCompatActivity() {
                     valBarraRPM.text = "${dados?.rpm} RPM"
 
                     dados?.let {
-                        // Converte os valores para Int
                         val velocidade = it.velocidade.toInt()
                         val rpm = it.rpm.toInt()
                         val temperatura = it.temperatura.toInt()
                         val pressao = it.pressao.toInt()
 
-                        // Calcula as alturas em porcentagem convertida para pixels
                         val alturaVelocidade = calcularAlturaBarra(velocidade, VEL_MAX)
                         val alturaRPM = calcularAlturaBarra(rpm, RPM_MAX)
                         val alturaTemperatura = calcularAlturaBarra(temperatura, TEMP_MAX)
                         val alturaPressao = calcularAlturaBarra(pressao, PRESS_MAX)
 
-                        // Atualiza a altura da barra de velocidade
                         val paramsVelo = barraVelocidade.layoutParams
                         paramsVelo.height = alturaVelocidade
                         barraVelocidade.layoutParams = paramsVelo
 
-                        // Atualiza a altura da barra de RPM
                         val paramsRPM = barraRPM.layoutParams
                         paramsRPM.height = alturaRPM
                         barraRPM.layoutParams = paramsRPM
 
-                        // Atualiza a altura da barra de temperatura
                         val paramsTemp = barraTemperatura.layoutParams
                         paramsTemp.height = alturaTemperatura
                         barraTemperatura.layoutParams = paramsTemp
 
-                        // Atualiza a altura da barra de pressão
                         val paramsPress = barraPressao.layoutParams
                         paramsPress.height = alturaPressao
                         barraPressao.layoutParams = paramsPress
 
-                        // Força o redesenho das views
                         barraVelocidade.requestLayout()
                         barraRPM.requestLayout()
                         barraTemperatura.requestLayout()
@@ -178,7 +302,6 @@ class MainActivity : AppCompatActivity() {
                 textPressao.text = "Erro de conexão"
                 valBarraPressao.text = "-"
 
-                // Define altura mínima (10px) em caso de erro
                 val alturaMinima = dpToPix(10)
 
                 val paramsVelo = barraVelocidade.layoutParams
@@ -197,7 +320,6 @@ class MainActivity : AppCompatActivity() {
                 paramsPress.height = alturaMinima
                 barraPressao.layoutParams = paramsPress
 
-                // Força o redesenho
                 barraVelocidade.requestLayout()
                 barraRPM.requestLayout()
                 barraTemperatura.requestLayout()
