@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="24dp"
+        android:padding="5dp"
         android:background="#F5F5F5">
 
         <!-- Logo -->
@@ -32,6 +32,18 @@
             android:layout_height="wrap_content"
             android:text="Telemetria App V02"
             android:textSize="28sp"
+            android:textColor="#6200EE"
+            android:fontFamily="sans-serif-black"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="32dp"/>
+
+        <!-- Titulo -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="arrasta pra baixo"
+            android:textStyle="italic|italic"
+            android:textSize="18sp"
             android:textColor="#6200EE"
             android:fontFamily="sans-serif-black"
             android:layout_gravity="center_horizontal"
@@ -142,7 +154,7 @@
                 android:shadowRadius="60"
                 android:text="--"
                 android:textColor="@color/black"
-                android:textSize="22sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/barraVelocidade"
                 app:layout_constraintLeft_toLeftOf="@+id/barraVelocidade"
@@ -154,7 +166,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="12dp"
+                android:padding = "12px"
                 android:shadowColor="@color/black"
                 android:shadowDx="0"
                 android:shadowDy="0"
@@ -197,7 +209,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="12dp"
+                android:padding = "12px"
                 android:shadowColor="@color/black"
                 android:shadowDx="0"
                 android:shadowDy="0"
@@ -223,7 +235,7 @@
                 android:shadowRadius="60"
                 android:text="--"
                 android:textColor="@color/black"
-                android:textSize="22sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/barraRPM"
                 app:layout_constraintLeft_toLeftOf="@id/barraRPM"
@@ -235,7 +247,7 @@
                 android:layout_width="45dp"
                 android:layout_height="150dp"
                 android:background="@drawable/bg_gfx_rect"
-                android:backgroundTint="#5d00ff"
+                android:backgroundTint="#ff00ee"
                 android:gravity="center"
                 android:padding="12dp"
                 android:shadowColor="@color/black"
@@ -265,7 +277,7 @@
                 android:shadowRadius="60"
                 android:text="--"
                 android:textColor="@color/black"
-                android:textSize="22sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/barraTemperatura"
                 app:layout_constraintLeft_toLeftOf="@+id/barraTemperatura"
@@ -277,7 +289,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="12dp"
+                android:padding = "12px"
                 android:shadowColor="@color/black"
                 android:shadowDx="0"
                 android:shadowDy="0"
@@ -297,7 +309,7 @@
                 android:layout_height="150dp"
                 android:layout_margin="0dp"
                 android:background="@drawable/bg_gfx_rect"
-                android:backgroundTint="#c300ff"
+                android:backgroundTint="#ff0011"
                 android:gravity="center"
                 android:padding="12dp"
                 android:shadowColor="@color/black"
@@ -327,7 +339,7 @@
                 android:shadowRadius="60"
                 android:text="--"
                 android:textColor="@color/black"
-                android:textSize="22sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/barraPressao"
                 app:layout_constraintLeft_toLeftOf="@+id/barraPressao"
@@ -339,7 +351,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="12dp"
+                android:padding = "12px"
                 android:shadowColor="@color/black"
                 android:shadowDx="0"
                 android:shadowDy="0"
@@ -360,16 +372,6 @@
             android:layout_height="0dp"
             android:layout_weight="1"/>
 
-        <!-- rodape -->
-        <TextView
-            android:id="@+id/textRodape"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Desenvolvido pela equipe de Intel"
-            android:textSize="10sp"
-            android:textColor="#888888"
-            android:layout_gravity="end"
-            android:fontFamily="sans-serif-light"/>
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/lineChart"
@@ -377,6 +379,23 @@
             android:layout_height="250dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"/>
+
+        <!-- rodape -->
+        <TextView
+            android:id="@+id/textRodape"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Desenvolvido pela equipe de Intel"
+            android:textSize="16sp"
+            android:textColor="#888888"
+            android:layout_gravity="end"
+            android:fontFamily="sans-serif-light"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="120px"
+
+            />
 
     </LinearLayout>
 </ScrollView>

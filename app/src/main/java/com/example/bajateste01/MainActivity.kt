@@ -218,7 +218,7 @@ class MainActivity : AppCompatActivity() {
             lineChart.invalidate()
         }
     }
-
+ 
     private fun dpToPix(dp: Int): Int {
         return (dp * resources.displayMetrics.density).toInt()
     }
