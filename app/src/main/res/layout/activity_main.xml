@@ -1,373 +1,493 @@
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:background="#F5F5F5">
+    android:fillViewport="true">
 
-    <!-- Logo -->
-    <ImageView
-        android:id="@+id/imageLogo"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/logo"
-        android:layout_gravity="center_horizontal"
-        android:contentDescription="Logo do App"
-        android:layout_marginBottom="16dp"/>
-
-    <!-- Titulo -->
-    <TextView
-        android:id="@+id/textTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Telemetria App V02"
-        android:textSize="28sp"
-        android:textColor="#6200EE"
-        android:fontFamily="sans-serif-black"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="32dp"/>
-
-    <!-- Sensores -->
-    <TextView
-        android:id="@+id/textVelocidade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Velocidade: --"
-        android:textSize="22sp"
-        android:textColor="#FFFFFF"
-        android:padding="12dp"
-        android:background="#6200EE"
-        android:layout_gravity="center_horizontal"/>
-
-    <View
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="16dp"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:background="#F5F5F5">
 
-    <TextView
-        android:id="@+id/textRPM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RPM: --"
-        android:textSize="22sp"
-        android:textColor="#FFFFFF"
-        android:padding="12dp"
-        android:background="#6200EE"
-        android:layout_gravity="center_horizontal"/>
+        <!-- Logo -->
+        <ImageView
+            android:id="@+id/imageLogo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/logo"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="Logo do App"
+            android:layout_marginBottom="16dp"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="16dp"/>
+        <!-- Titulo -->
+        <TextView
+            android:id="@+id/textTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telemetria App V02"
+            android:textSize="28sp"
+            android:textColor="#6200EE"
+            android:fontFamily="sans-serif-black"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="32dp"/>
 
-    <TextView
-        android:id="@+id/textTemperatura"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Temperatura: --"
-        android:textSize="22sp"
-        android:textColor="#FFFFFF"
-        android:padding="12dp"
-        android:background="#6200EE"
-        android:layout_gravity="center_horizontal"/>
+        <!-- Titulo -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="arrasta pra baixo"
+            android:textStyle="italic|italic"
+            android:textSize="18sp"
+            android:textColor="#6200EE"
+            android:fontFamily="sans-serif-black"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="32dp"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="16dp"/>
+        <!-- Sensores -->
+        <TextView
+            android:id="@+id/textVelocidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Velocidade: --"
+            android:textSize="22sp"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:background="#6200EE"
+            android:layout_gravity="center_horizontal"/>
 
-    <TextView
-        android:id="@+id/textPressao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pressão: --"
-        android:textSize="22sp"
-        android:textColor="#FFFFFF"
-        android:padding="12dp"
-        android:background="#6200EE"
-        android:layout_gravity="center_horizontal"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_weight="0.1"/>
-
-    <!--barras de gráfico-->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp">
-
-        <!--barra Velocidade-->
         <View
-            android:id="@+id/barraVelocidade"
-            android:layout_width="45dp"
-            android:layout_height="140dp"
-            android:layout_margin="0dp"
-            android:background="@drawable/bg_gfx_rect"
-            android:backgroundTint="#0400ff"
-            android:gravity="center"
-            android:padding="12dp"
-            android:shadowColor="@color/black"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="60"
-            android:text=""
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/barraRPM"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="match_parent"
+            android:layout_height="16dp"/>
 
-        <!--Texto superior Velocidade-->
         <TextView
-            android:id="@+id/textBarraVelocidadeVal"
+            android:id="@+id/textRPM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="12dp"
-            android:shadowColor="@color/black"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="60"
-            android:text="--"
-            android:textColor="@color/black"
+            android:text="RPM: --"
             android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@+id/barraVelocidade"
-            app:layout_constraintRight_toRightOf="@+id/barraVelocidade"
-            app:layout_constraintBottom_toTopOf="@+id/barraVelocidade" />
-
-        <!--Texto inferior Velocidade-->
-        <TextView
-            android:id="@+id/textBarraVelocidadeBaixo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            android:textColor="#FFFFFF"
             android:padding="12dp"
-            android:shadowColor="@color/black"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="60"
-            android:text="VEL"
-            android:textColor="@color/black"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@id/barraVelocidade"
-            app:layout_constraintRight_toRightOf="@+id/barraVelocidade"
-            app:layout_constraintTop_toBottomOf="@+id/barraVelocidade" />
+            android:background="#6200EE"
+            android:layout_gravity="center_horizontal"/>
 
-        <!--barra RPM-->
         <View
-            android:id="@+id/barraRPM"
-            android:layout_width="45dp"
-            android:layout_height="140dp"
-            android:layout_margin="0dp"
-            android:background="@drawable/bg_gfx_rect"
-            android:backgroundTint="#32a852"
-            android:gravity="center"
-            android:padding="12dp"
-            android:shadowColor="@color/black"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="60"
-            android:text=""
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/barraVelocidade"
-            app:layout_constraintRight_toLeftOf="@+id/barraTemperatura"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="match_parent"
+            android:layout_height="16dp"/>
 
-        <!--Texto inferior RPM-->
         <TextView
-            android:id="@+id/textBarraRPMbaixo"
+            android:id="@+id/textTemperatura"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="12dp"
-            android:shadowColor="@color/black"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="60"
-            android:text="RPM"
-            android:textColor="@color/black"
+            android:text="Temperatura: --"
             android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@id/barraRPM"
-            app:layout_constraintRight_toRightOf="@id/barraRPM"
-            app:layout_constraintTop_toBottomOf="@id/barraRPM" />
-
-
-        <!--Texto superior RPM-->
-        <TextView
-            android:id="@+id/textBarraRPMval"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            android:textColor="#FFFFFF"
             android:padding="12dp"
-            android:shadowColor="@color/black"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="60"
-            android:text="--"
-            android:textColor="@color/black"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@id/barraRPM"
-            app:layout_constraintRight_toRightOf="@id/barraRPM"
-            app:layout_constraintBottom_toTopOf="@id/barraRPM" />
+            android:background="#6200EE"
+            android:layout_gravity="center_horizontal"/>
 
-        <!--barra Temperatura-->
         <View
-            android:id="@+id/barraTemperatura"
-            android:layout_width="45dp"
-            android:layout_height="140dp"
-            android:background="@drawable/bg_gfx_rect"
-            android:backgroundTint="#5d00ff"
-            android:gravity="center"
-            android:padding="12dp"
-            android:shadowColor="@color/black"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="60"
-            android:text=""
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/barraRPM"
-            app:layout_constraintRight_toLeftOf="@+id/barraPressao"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="match_parent"
+            android:layout_height="16dp"/>
 
-        <!--Texto superior Temperatura-->
         <TextView
-            android:id="@+id/textBarraTemperaturaVal"
+            android:id="@+id/textPressao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="12dp"
-            android:shadowColor="@color/black"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="60"
-            android:text="--"
-            android:textColor="@color/black"
+            android:text="Pressão: --"
             android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@+id/barraTemperatura"
-            app:layout_constraintRight_toRightOf="@+id/barraTemperatura"
-            app:layout_constraintBottom_toTopOf="@+id/barraTemperatura" />
-
-        <!--Texto inferior Temperatura-->
-        <TextView
-            android:id="@+id/textBarraTemperatura"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            android:textColor="#FFFFFF"
             android:padding="12dp"
-            android:shadowColor="@color/black"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="60"
-            android:text="TEMP"
-            android:textColor="@color/black"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@+id/barraTemperatura"
-            app:layout_constraintRight_toRightOf="@+id/barraTemperatura"
-            app:layout_constraintTop_toBottomOf="@+id/barraTemperatura" />
+            android:background="#6200EE"
+            android:layout_gravity="center_horizontal"/>
 
-        <!--barra Pressão-->
         <View
-            android:id="@+id/barraPressao"
-            android:layout_width="45dp"
-            android:layout_height="140dp"
-            android:layout_margin="0dp"
-            android:background="@drawable/bg_gfx_rect"
-            android:backgroundTint="#c300ff"
-            android:gravity="center"
-            android:padding="12dp"
-            android:shadowColor="@color/black"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="60"
-            android:text=""
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/barraTemperatura"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="0.1"/>
 
-        <!--Texto superior Pressao-->
+        <!--barras de gráfico-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:padding="2dp">
+
+            <!--barra Velocidade - CORRIGIDA: bottom fixo, altura variável -->
+            <View
+                android:id="@+id/barraVelocidade"
+                android:layout_width="45dp"
+                android:layout_height="150dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/bg_gfx_rect"
+                android:backgroundTint="#0400ff"
+                android:gravity="center"
+                android:padding="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="60"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/textBarraVelocidadeBaixo"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/barraRPM"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <!--Texto superior Velocidade-->
+            <TextView
+                android:id="@+id/textBarraVelocidadeVal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="60"
+                android:text="--"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/barraVelocidade"
+                app:layout_constraintLeft_toLeftOf="@+id/barraVelocidade"
+                app:layout_constraintRight_toRightOf="@+id/barraVelocidade" />
+
+            <!--Texto inferior Velocidade-->
+            <TextView
+                android:id="@+id/textBarraVelocidadeBaixo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding = "12px"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="60"
+                android:text="VEL"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@id/barraVelocidade"
+                app:layout_constraintRight_toRightOf="@+id/barraVelocidade" />
+
+            <!--barra RPM - CORRIGIDA: bottom fixo, altura variável -->
+            <View
+                android:id="@+id/barraRPM"
+                android:layout_width="45dp"
+                android:layout_height="150dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/bg_gfx_rect"
+                android:backgroundTint="#32a852"
+                android:gravity="center"
+                android:padding="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="60"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/textBarraRPMbaixo"
+                app:layout_constraintLeft_toRightOf="@+id/barraVelocidade"
+                app:layout_constraintRight_toLeftOf="@+id/barraTemperatura"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <!--Texto inferior RPM-->
+            <TextView
+                android:id="@+id/textBarraRPMbaixo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding = "12px"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="60"
+                android:text="RPM"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@id/barraRPM"
+                app:layout_constraintRight_toRightOf="@id/barraRPM" />
+
+            <!--Texto superior RPM-->
+            <TextView
+                android:id="@+id/textBarraRPMval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="60"
+                android:text="--"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/barraRPM"
+                app:layout_constraintLeft_toLeftOf="@id/barraRPM"
+                app:layout_constraintRight_toRightOf="@id/barraRPM" />
+
+            <!--barra Temperatura - CORRIGIDA: bottom fixo, altura variável -->
+            <View
+                android:id="@+id/barraTemperatura"
+                android:layout_width="45dp"
+                android:layout_height="150dp"
+                android:background="@drawable/bg_gfx_rect"
+                android:backgroundTint="#ff00ee"
+                android:gravity="center"
+                android:padding="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="60"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/textBarraTemperaturaBaixo"
+                app:layout_constraintLeft_toRightOf="@+id/barraRPM"
+                app:layout_constraintRight_toLeftOf="@+id/barraPressao"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <!--Texto superior Temperatura-->
+            <TextView
+                android:id="@+id/textBarraTemperaturaVal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="60"
+                android:text="--"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/barraTemperatura"
+                app:layout_constraintLeft_toLeftOf="@+id/barraTemperatura"
+                app:layout_constraintRight_toRightOf="@+id/barraTemperatura" />
+
+            <!--Texto inferior Temperatura-->
+            <TextView
+                android:id="@+id/textBarraTemperaturaBaixo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding = "12px"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="60"
+                android:text="TEMP"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/barraTemperatura"
+                app:layout_constraintRight_toRightOf="@+id/barraTemperatura" />
+
+            <!--barra Pressão - CORRIGIDA: bottom fixo, altura variável -->
+            <View
+                android:id="@+id/barraPressao"
+                android:layout_width="45dp"
+                android:layout_height="150dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/bg_gfx_rect"
+                android:backgroundTint="#ff0011"
+                android:gravity="center"
+                android:padding="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="60"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/textBarraPressaoBaixo"
+                app:layout_constraintLeft_toRightOf="@+id/barraTemperatura"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <!--Texto superior Pressao-->
+            <TextView
+                android:id="@+id/textBarraPressaoVal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="60"
+                android:text="--"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/barraPressao"
+                app:layout_constraintLeft_toLeftOf="@+id/barraPressao"
+                app:layout_constraintRight_toRightOf="@+id/barraPressao" />
+
+            <!--Texto inferior Pressão-->
+            <TextView
+                android:id="@+id/textBarraPressaoBaixo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding = "12px"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="60"
+                android:text="PRES"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/barraPressao"
+                app:layout_constraintRight_toRightOf="@+id/barraPressao" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- espaco em branco para deixar o rodape la em baixo -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
         <TextView
-            android:id="@+id/textBarraPressaoVal"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="12dp"
-            android:shadowColor="@color/black"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="60"
-            android:text="--"
-            android:textColor="@color/black"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@+id/barraPressao"
-            app:layout_constraintRight_toRightOf="@+id/barraPressao"
-            app:layout_constraintBottom_toTopOf="@+id/barraPressao" />
+            android:layout_gravity = "center"
+            android:text = "GERAL"
+            android:textSize = "120px"
+            android:textColor = "@color/black"
+            android:paddingBottom = "42px"
+            app:layout_constraintBottom_toTopOf="@+id/lineChart"
+            />
 
-        <!--Texto inferior Pressão-->
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChart"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
         <TextView
-            android:id="@+id/textBarraPressao"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="12dp"
-            android:shadowColor="@color/black"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="60"
-            android:text="PRES"
-            android:textColor="@color/black"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@+id/barraPressao"
-            app:layout_constraintRight_toRightOf="@+id/barraPressao"
-            app:layout_constraintTop_toBottomOf="@+id/barraPressao" />
+            android:layout_gravity = "center"
+            android:text = "VEL"
+            android:textSize = "120px"
+            android:textColor = "@color/black"
+            android:paddingBottom = "42px"
+            app:layout_constraintBottom_toTopOf="@+id/lineChart"
+            />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChartVEL"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
 
-    <!-- espaco em branco para deixar o rodape la em baixo(futuramente colocar o grafico aqui -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        <TextView
 
-    <!-- rodape -->
-    <TextView
-        android:id="@+id/textRodape"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Desenvolvido pela equipe de Intel"
-        android:textSize="10sp"
-        android:textColor="#888888"
-        android:layout_gravity="end"
-        android:fontFamily="sans-serif-light"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity = "center"
+            android:text = "RPM"
+            android:textSize = "120px"
+            android:textColor = "@color/black"
+            android:paddingBottom = "42px"
+            app:layout_constraintBottom_toTopOf="@+id/lineChart"
+            />
 
-</LinearLayout>
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChartRPM"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity = "center"
+            android:text = "TEMP"
+            android:textSize = "120px"
+            android:textColor = "@color/black"
+            android:paddingBottom = "42px"
+            app:layout_constraintBottom_toTopOf="@+id/lineChart"
+            />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChartTEMP"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity = "center"
+            android:text = "PRESS"
+            android:textSize = "120px"
+            android:textColor = "@color/black"
+            android:paddingBottom = "42px"
+            app:layout_constraintBottom_toTopOf="@+id/lineChart"
+            />
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChartPRESS"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+
+        <!-- rodape -->
+        <TextView
+            android:id="@+id/textRodape"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Desenvolvido pela equipe de Intel"
+            android:textSize="16sp"
+            android:textColor="#888888"
+            android:layout_gravity="end"
+            android:fontFamily="sans-serif-light"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="120px"
+
+            />
+
+    </LinearLayout>
+</ScrollView>
