@@ -372,6 +372,18 @@
             android:layout_height="0dp"
             android:layout_weight="1"/>
 
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity = "center"
+            android:text = "GERAL"
+            android:textSize = "120px"
+            android:textColor = "@color/black"
+            android:paddingBottom = "42px"
+            app:layout_constraintBottom_toTopOf="@+id/lineChart"
+            />
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/lineChart"
@@ -379,6 +391,86 @@
             android:layout_height="250dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"/>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity = "center"
+            android:text = "VEL"
+            android:textSize = "120px"
+            android:textColor = "@color/black"
+            android:paddingBottom = "42px"
+            app:layout_constraintBottom_toTopOf="@+id/lineChart"
+            />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChartVEL"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity = "center"
+            android:text = "RPM"
+            android:textSize = "120px"
+            android:textColor = "@color/black"
+            android:paddingBottom = "42px"
+            app:layout_constraintBottom_toTopOf="@+id/lineChart"
+            />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChartRPM"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity = "center"
+            android:text = "TEMP"
+            android:textSize = "120px"
+            android:textColor = "@color/black"
+            android:paddingBottom = "42px"
+            app:layout_constraintBottom_toTopOf="@+id/lineChart"
+            />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChartTEMP"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity = "center"
+            android:text = "PRESS"
+            android:textSize = "120px"
+            android:textColor = "@color/black"
+            android:paddingBottom = "42px"
+            app:layout_constraintBottom_toTopOf="@+id/lineChart"
+            />
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChartPRESS"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
 
         <!-- rodape -->
         <TextView
